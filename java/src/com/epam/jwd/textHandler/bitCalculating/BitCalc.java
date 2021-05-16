@@ -30,7 +30,7 @@ public class BitCalc {
     }
 
     public Long calc(String text) {
-        Expression evaluator = new Evaluate(getReversePolishNotation(text));
+        Expression evaluator = new Evaluate(getReversePolishNotation("5|(1|6)"));
         return evaluator.interpreter(evaluator);
     }
 
@@ -42,9 +42,20 @@ public class BitCalc {
         while (i < expression.length()) {
             switch (expression.charAt(i)) {
                 case '~':
+                case ')': {
+                    String op = stack.pop();
+                    while (!op.equals("(")) {
+                        line.add(op);
+                        op = stack.pop();
+                        i--;
+                    }
+                    i++;
+                }
+                break;
+                case '(':
                     stack.push(String.valueOf(expression.charAt(i)));
                     break;
-                case '>':
+                case '>': {
                     while (!stack.empty()) {
                         String op = stack.pop();
                         if (op.equals("~")) {
@@ -56,7 +67,8 @@ public class BitCalc {
                     }
                     i++;
                     stack.push(">>");
-                    break;
+                }
+                break;
                 case '<':
                     while (!stack.empty()) {
                         String op = stack.pop();
@@ -100,6 +112,7 @@ public class BitCalc {
                     line.add(strings[0]);
                     i += strings[0].length() - 1;
             }
+
             i++;
         }
         while (!stack.empty()) {
