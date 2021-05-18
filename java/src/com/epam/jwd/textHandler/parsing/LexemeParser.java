@@ -1,7 +1,7 @@
 package com.epam.jwd.textHandler.parsing;
 
-import com.epam.jwd.textHandler.model.*;
 import com.epam.jwd.textHandler.bitCalculating.BitCalc;
+import com.epam.jwd.textHandler.model.*;
 
 import java.util.ArrayList;
 
@@ -26,7 +26,7 @@ public class LexemeParser extends Parser<Lexeme> {
     public Lexeme parse(String text) {
         ArrayList<TextComponent> lexemeComponents = new ArrayList<>();
 
-        if (BitCalc.getInstance().isBitExpression(text)){
+        if (BitCalc.getInstance().isBitExpression(text)) {
             ArrayList<Symbol> expression = new ArrayList<>();
             int i = 0;
             while (i < text.length()) {
@@ -34,8 +34,7 @@ public class LexemeParser extends Parser<Lexeme> {
                 i++;
             }
             lexemeComponents.add(new BitExpression(expression));
-        }
-        else {
+        } else {
             ArrayList<Symbol> word = new ArrayList<>();
             int i = 0;
             while (i < text.length()) {

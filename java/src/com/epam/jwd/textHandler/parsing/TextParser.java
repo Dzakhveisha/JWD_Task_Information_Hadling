@@ -5,7 +5,7 @@ import com.epam.jwd.textHandler.model.Text;
 
 import java.util.ArrayList;
 
-public class TextParser extends Parser<Text>{
+public class TextParser extends Parser<Text> {
 
     private static TextParser instance = null;
     private Parser nextParser;

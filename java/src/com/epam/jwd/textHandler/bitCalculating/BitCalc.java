@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
 public class BitCalc {
     private static BitCalc instance = null;
     private static final String REGEX = "[-,:’а-яёА-ЯЁ]+|[-,’:a-zA-Z]+";
+    public static final String NUMBER_SEPARATOR = "\\D+";
 
     private BitCalc() {
     }
@@ -43,7 +44,7 @@ public class BitCalc {
         int i = 0;
         while (i < expression.length()) {
             switch (expression.charAt(i)) {
-                case '~':{
+                case '~': {
                     stack.push(String.valueOf(expression.charAt(i)));
                 }
                 break;
@@ -113,7 +114,7 @@ public class BitCalc {
                 case '^':
                     while (!stack.empty()) {
                         String op = stack.pop();
-                        if (op.equals("~") || op.equals(">>")||
+                        if (op.equals("~") || op.equals(">>") ||
                                 op.equals("<<") || op.equals("&")) {
                             line.add(op);
                         } else {
@@ -124,7 +125,7 @@ public class BitCalc {
                     stack.push(String.valueOf(expression.charAt(i)));
                     break;
                 default:
-                    String[] strings = expression.substring(i).split("\\D+");
+                    String[] strings = expression.substring(i).split(NUMBER_SEPARATOR);
                     line.add(strings[0]);
                     i += strings[0].length() - 1;
             }

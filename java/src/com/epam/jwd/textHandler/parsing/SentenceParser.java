@@ -1,14 +1,11 @@
 package com.epam.jwd.textHandler.parsing;
 
 import com.epam.jwd.textHandler.model.Lexeme;
-import com.epam.jwd.textHandler.model.Paragraph;
 import com.epam.jwd.textHandler.model.Sentence;
 
 import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-public class SentenceParser extends Parser<Sentence>{
+public class SentenceParser extends Parser<Sentence> {
     private static SentenceParser instance = null;
     private Parser nextParser;
     private static final String SEPARATOR_REGEX = "\\s";
@@ -36,9 +33,9 @@ public class SentenceParser extends Parser<Sentence>{
         if (text.length() > 3) {
             if (text.charAt(text.length() - 2) == '.' & text.charAt(text.length() - 3) == '.') {
                 punctuation = "...";
-                text = text.substring(0,text.length() - 3);
+                text = text.substring(0, text.length() - 3);
 
-            }else {
+            } else {
                 text = text.substring(0, text.length() - 1);
             }
         }
