@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class SentenceParser extends Parser<Sentence> {
     private static SentenceParser instance = null;
     private Parser nextParser;
-    private static final String SEPARATOR_REGEX = "\\s";
+    private static final String SEPARATOR_REGEX = "\\s+";
     private static final String PUNCTUATION_REGEX = "!|\\?|\\.{1,3}";
 
     private SentenceParser(Parser nextParser) {
