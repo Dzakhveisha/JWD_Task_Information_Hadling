@@ -1,5 +1,8 @@
 package com.epam.jwd.textHandler.util;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -7,6 +10,7 @@ import java.io.IOException;
 
 public class TextReader {
     private static TextReader instance = null;
+    private static final Logger LOGGER = LogManager.getLogger(TextReader.class);
 
     private TextReader() {}
 
@@ -31,7 +35,7 @@ public class TextReader {
                 line = br.readLine();
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.error("File is not read.");
         }
         return stringBuffer;
     }

@@ -1,6 +1,7 @@
 package com.epam.jwd.textHandler.model;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Lexeme implements TextComponent {
 
@@ -28,5 +29,18 @@ public class Lexeme implements TextComponent {
             result += component.readToString();
         }
         return result;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Lexeme)) return false;
+        Lexeme lexeme = (Lexeme) o;
+        return Objects.equals(lexemeComponents, lexeme.lexemeComponents);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(lexemeComponents);
     }
 }

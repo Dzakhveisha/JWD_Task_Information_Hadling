@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class ParagraphParser extends Parser<Paragraph> {
     private static ParagraphParser instance = null;
-    private Parser nextParser;
+    private final Parser nextParser;
     private static final String SEPARATOR_REGEX = "!|\\?|\\.{1,3}";
 
     private ParagraphParser(Parser nextParser) {

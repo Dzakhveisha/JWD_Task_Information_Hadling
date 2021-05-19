@@ -1,6 +1,7 @@
 package com.epam.jwd.textHandler.model;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Word implements TextComponent{
     private final ArrayList<Symbol> symbols;
@@ -27,5 +28,18 @@ public class Word implements TextComponent{
             result += symbol.readToString();
         }
         return result;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Word)) return false;
+        Word word = (Word) o;
+        return Objects.equals(symbols, word.symbols);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(symbols);
     }
 }

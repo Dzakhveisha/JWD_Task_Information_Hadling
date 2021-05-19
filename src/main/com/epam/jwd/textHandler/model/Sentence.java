@@ -1,6 +1,7 @@
 package com.epam.jwd.textHandler.model;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Sentence implements TextComponent {
 
@@ -36,5 +37,18 @@ public class Sentence implements TextComponent {
         }
         result.replaceFirst(" ", "");
         return result + punctuation;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Sentence)) return false;
+        Sentence sentence = (Sentence) o;
+        return Objects.equals(lexemes, sentence.lexemes) && Objects.equals(punctuation, sentence.punctuation);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(lexemes, punctuation);
     }
 }

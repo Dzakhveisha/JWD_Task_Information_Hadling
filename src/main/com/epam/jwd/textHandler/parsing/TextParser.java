@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class TextParser extends Parser<Text> {
 
     private static TextParser instance = null;
-    private Parser nextParser;
+    private final Parser nextParser;
     private static final String SEPARATOR_REGEX = "^| {4}";
 
     private TextParser(Parser nextParser) {

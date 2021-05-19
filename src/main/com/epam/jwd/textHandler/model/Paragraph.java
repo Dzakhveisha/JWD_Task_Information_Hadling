@@ -1,6 +1,7 @@
 package com.epam.jwd.textHandler.model;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Paragraph implements TextComponent{
 
@@ -28,5 +29,18 @@ public class Paragraph implements TextComponent{
             result += sent.readToString();
         }
         return result + "\n";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Paragraph)) return false;
+        Paragraph paragraph = (Paragraph) o;
+        return Objects.equals(sentences, paragraph.sentences);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(sentences);
     }
 }
